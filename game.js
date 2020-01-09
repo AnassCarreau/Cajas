@@ -49,7 +49,7 @@ if (this.input.keyboard.checkDown(this.cursor_Space, 250))
     caja.setInteractive();
     cajas.add(caja);
     caja.on('pointerdown', pointer =>{
-     if(this.select!=undefined){lastc=this.select;this.select.setTexture("ground")}
+     if(this.select!=undefined){this.select.setTexture("ground")}
       
      this.select=caja;
      
@@ -85,10 +85,15 @@ if (this.D.isDown && this.select!=undefined)
 {
 cajas.remove(this.select);
 this.select.destroy();
-if(lastc!=undefined){
+this.select=cajas.getFirstAlive();
+if(this.select!=null){
+  this.select.setTexture("select");
+
+}
+/*if(lastc!=undefined){
   this.select=lastc;
   this.select.setTexture("select");
-}
+}*/
 this.D.isDown=false;
 
 
